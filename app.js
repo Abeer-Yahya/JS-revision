@@ -33,6 +33,26 @@ let isEven = (num) => {
 console.log(isEven(9));
 
 /*Ex5: Write a function to swap all instances of string ch1 with string ch2 and vice versa  (charSwap( "aaddeee", "a", "d") ➞ "ddaaeee")*/
+let text = "aaddeee";
+let char1 = "a";
+let char2 = "d";
+
+let newStr = "";
+function charSwap(str, char1, char2) {
+  for (let x = 0; x < str.length; x++) {
+    if (str[x] == char1) {
+      newStr = newStr + char2;
+      continue;
+    }
+    if (str[x] == char2) {
+      newStr = newStr + char1;
+      continue;
+    }
+    newStr = newStr + str[x];
+  }
+  return newStr;
+}
+console.log(charSwap(text, char1, char2));
 
 /*Ex6: Return all the names in this array  [“Rawan", "Jafar", "Muhammad", "Muhammad", "Esraa", “Dareen”]*/
 const names = ["Rawan", "Jafar", "Muhammad", "Ibrahim", "Esraa", "Dareen"];
@@ -43,3 +63,84 @@ for (let i = 0; i < names.length; i++) {
 names.forEach((element) => {
   console.log(element);
 });
+
+/*Ex8: Project an array of series into an array of {id, title} pairs using forEach()*/
+
+let newSeries = [
+  {
+    id: 70111470,
+    title: "Die Hard",
+    boxart: "http://cdn-0.nflximg.com/images/2891/DieHard.jpg",
+    uri: "http://api.netflix.com/catalog/titles/movies/70111470",
+    rating: [4.0],
+    bookmark: [],
+  },
+  {
+    id: 654356453,
+    title: "Bad Boys",
+    boxart: "http://cdn-0.nflximg.com/images/2891/BadBoys.jpg",
+    uri: "http://api.netflix.com/catalog/titles/movies/70111470",
+    rating: [5.0],
+    bookmark: [{ id: 432534, time: 65876586 }],
+  },
+  {
+    id: 65432445,
+    title: "The Chamber",
+    boxart: "http://cdn-0.nflximg.com/images/2891/TheChamber.jpg",
+    uri: "http://api.netflix.com/catalog/titles/movies/70111470",
+    rating: [4.0],
+    bookmark: [],
+  },
+  {
+    id: 675465,
+    title: "Fracture",
+    boxart: "http://cdn-0.nflximg.com/images/2891/Fracture.jpg",
+    uri: "http://api.netflix.com/catalog/titles/movies/70111470",
+    rating: [5.0],
+    bookmark: [{ id: 432534, time: 65876586 }],
+  },
+];
+
+console.log(newSeriesArray(newSeries));
+
+function newSeriesArray() {
+  let newArray = [];
+  newSeries.forEach((element) => {
+    newArray.push({ id: element.id, title: element.title });
+  });
+  return newArray;
+}
+
+/* Ex 9: Use map() now to implement the same previous functionality*/
+
+let newMap = newSeries.map((item) => {
+  return { id: item.id, title: item.title };
+});
+console.log(newMap);
+
+/*Ex 10: Use filter() to return the series with a rating under 5 */
+let newFilter = newSeries.filter((ele) => {
+  if (ele.rating < 5) {
+    return ele;
+  }
+});
+console.log(newFilter);
+
+/*Ex 11: Use reduce()  function to return the longest string in an array of strings.
+["Java", "JavaScript", "Python", "C++", "PHP"]*/
+
+let multi = ["Java", "JavaScript", "Python", "C++", "PHP"];
+
+let longest = multi.reduce((acc, element) => {
+  if (element.length > acc.length) {
+    return element;
+  } else {
+    return acc;
+  }
+});
+
+console.log(longest);
+
+/*Ex 12: Create a function displayName that, given the pokemon data, below, uses reduce to return an array containing the names of the characters*/
+/*Ex13: Write a function that takes the following array of objects, uses binary search to search for certain email input from the user, and return its value.*/
+/*Ex14: What is the output of the following JS code segments? and Why? */
